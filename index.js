@@ -1,6 +1,5 @@
 const http = require("http");
 
-const hostname = "127.0.0.1";
 const port = 8080;
 
 const {Client} = require("pg");
@@ -18,8 +17,7 @@ const server = http.createServer((req, res) => {
   console.log(`${new Date()}: ${req.method}: ${req.url}`);
 
   client.query("SELECT version()::text as version", [], (err, dbres) => {
-    console.log(err ? err.stack : dbres.rows[0].version); // Hello World!
-    client.end();
+    console.log(err ? err.stack : dbres.rows[0].version);
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
@@ -27,6 +25,4 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+server.listen(port);
