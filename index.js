@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
-    res.end(`NODE_ENV: ${process.env.NODE_ENV}\nAPP_DBHOST: ${process.env.APP_DBHOST}\nDB_VERSION: ${dbres.rows[0].version}`);
+    res.end(`REQ_URL: ${req.url}\nNODE_ENV: ${process.env.NODE_ENV}\nAPP_DBHOST: ${process.env.APP_DBHOST}\nDB_VERSION: ${dbres.rows[0].version}`);
   });
 });
 
